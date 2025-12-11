@@ -1,0 +1,11 @@
+name: Deploy to Render
+on:
+  push:
+    [cite_start]branches: [ main ] # Chạy khi nhánh main thay đổi 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deploy
+        # Gửi tín hiệu đến Render để pull code mới về
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
